@@ -5,7 +5,7 @@
  * @array: list of an integer of an array
  * @size: size of the array
  *
- * Return: void has no return value 
+ * Return: void has no return value
  */
 void selection_sort(int *array, size_t size);
 {
