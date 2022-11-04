@@ -71,7 +71,7 @@ void _join(int *array, int min, int max, int mid, int *buffer)
  * @array: list of an integers
  * @min: min index of the array
  * @max: max index of the array
- * @mid: mid index of the array
+ * @buffer: buffer of the integer
  *
  * Return: void has no return value
  */
