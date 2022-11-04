@@ -7,7 +7,7 @@
  *
  * Return: void has no return value
  */
-void selection_sort(int *array, size_t size);
+void selection_sort(int *array, size_t size)
 {
 	size_t i = 0, j, m;
 	int tmp;
