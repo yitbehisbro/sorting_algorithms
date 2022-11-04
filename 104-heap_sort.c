@@ -64,7 +64,10 @@ void heap_sort(int *array, size_t size)
 	if (!array || size == 0)
 		return;
 
-	for (limit = size; limit > 1; limit--)
+	i = 0;
+	limit = size;
+
+	while (limit > 1)
 	{
 		recursion_heap(array, i, size, limit);
 		if (array[i] >= array[limit - 1])
@@ -72,5 +75,6 @@ void heap_sort(int *array, size_t size)
 			_swap(array, i, limit - 1);
 			print_array(array, size);
 		}
+		limit--;
 	}
 }
