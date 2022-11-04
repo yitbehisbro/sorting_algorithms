@@ -90,7 +90,7 @@ void decrease_sort(listint_t **head, listint_t **limit, listint_t **list)
  * @list: list of the doubly linked list
  *
  * Return: void has no return value
- */	
+ */
 void cocktail_sort_list(listint_t **list)
 {
 	listint_t *limit1, *limit2, *head;
