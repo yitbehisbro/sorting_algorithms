@@ -1,84 +1,66 @@
 #include "sort.h"
 
 /**
- * swap_nums - swaps numbers
- *
- * @arr: input array
- * @a: first index
- * @b: second index
- * Return: no return
+ * swap - swaps an integers
+ * @int1: integer 1
+ * @int2: integer 2
  */
-void swap_nums(int *arr, int a, int b)
+void swap(int *int1, int *int2)
 {
-	arr[a] = arr[a] + arr[b];
-	arr[b] = arr[a] - arr[b];
-	arr[a] = arr[a] - arr[b];
+	int tmp = *int1;
+
+	*int1 = *int2;
+	*int2 = tmp;
 }
 
 /**
- * recursion_heap - recursion that builds the max heap tree
- *
- * @arr: input array
- * @i: index number
- * @size: size of the array
- * @limit: limit of the array
- * Return: no return
+ * max_heap - the max heap
+ * @array: list of an integers
+ * @size: the length of the array
+ * @idx: index
+ * @n: size of the array to run
  */
-void recursion_heap(int *arr, int i, size_t size, int limit)
+void max_heap(int *array, size_t size, int idx, size_t n)
 {
-	int bigger;
-	int i2;
+	int largest = idx;
+	int left = 2 * idx + 1;
+	int right = 2 * idx + 2;
+	
+	if (left < (int)n && array[left] > array[largest])
+		largest = left;
 
-	i2 = i * 2;
+	if (right < (int)n && array[right] > array[largest])
+		largest = right;
 
-	if (i2 + 2 < limit)
+	if (largest != idx)
 	{
-		recursion_heap(arr, i2 + 1, size, limit);
-		recursion_heap(arr, i2 + 2, size, limit);
-	}
-
-	if (i2 + 1 >= limit)
-		return;
-
-	if (i2 + 2 < limit)
-		bigger = (arr[i2 + 1] > arr[i2 + 2]) ? (i2 + 1) : (i2 + 2);
-	else
-		bigger = i2 + 1;
-
-	if (arr[i] < arr[bigger])
-	{
-		swap_nums(arr, i, bigger);
-		print_array(arr, size);
-		recursion_heap(arr, bigger, size, limit);
+		swap(&array[idx], &array[largest]);
+		print_array(array, size);
+		max_heap(array, size, largest, n);
 	}
 }
 
 /**
- * heap_sort - sorts an array of integers in ascending
- * order using the Heap sort algorithm
+ * heap_sort - sorts an array of integers in ascending order
+ * @array: list of an integers
+ * @size: the length of the array
  *
- * @array: input array
- * @size: size of the array
+ * Return: void has no return value
  */
 void heap_sort(int *array, size_t size)
 {
 	int i;
-	size_t limit;
 
-	if (!array || size == 0)
+	if (array == NULL || size < 2)
 		return;
 
-	i = 0;
-	limit = size;
+	for (i = (size - 2) / 2; i >= 0; --i)
+		max_heap(array, size, i, size);
 
-	while (limit > 1)
+	for (i = (size - 1); i > 0; --i)
 	{
-		recursion_heap(array, i, size, limit);
-		if (array[i] >= array[limit - 1])
-		{
-			swap_nums(array, i, limit - 1);
-			print_array(array, size);
-		}
-		limit--;
+		swap(&array[0], &array[i]);
+		print_array(array, size);
+		max_heap(array, size, 0, i);
 	}
 }
