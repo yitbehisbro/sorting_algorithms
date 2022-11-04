@@ -25,7 +25,7 @@ void max_heap(int *array, size_t size, int idx, size_t n)
 	int largest = idx;
 	int left = 2 * idx + 1;
 	int right = 2 * idx + 2;
-	
+
 	if (left < (int)n && array[left] > array[largest])
 		largest = left;
 
