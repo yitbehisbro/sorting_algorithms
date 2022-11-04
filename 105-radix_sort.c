@@ -7,13 +7,13 @@
  *
  * Return: max value in the array of integer
  */
-int _max(int *arr, int n)
+int _max(int *array, int size)
 {
 	int i, max = arr[0];
 
-	for (i = 1; i < n; i++)
-		if (arr[i] > max)
-			max = arr[i];
+	for (i = 1; i < size; i++)
+		if (array[i] > max)
+			max = array[i];
 	return (max);
 }
 
