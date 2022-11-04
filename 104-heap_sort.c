@@ -17,7 +17,7 @@ void swap(int *int1, int *int2)
  * max_heap - the max heap
  * @array: list of an integers
  * @size: the length of the array
- * @idx: index
+ * @idx: index of the array
  * @n: size of the array to run
  */
 void max_heap(int *array, size_t size, int idx, size_t n)
